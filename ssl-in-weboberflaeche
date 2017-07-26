@@ -1,0 +1,24 @@
+SSL-Zertifikat für die Weboberfläche einbinden
+Wir haben für diesen Server ein kostenloses Zertifikat von StartSSL genutzt. Die Domain muss bei StartSSL vorab validiert werden. Hierzu gibt es ausreichende Anleitungen im Netz.
+SSH-Verbindung zum Server aufbauen
+mkdir certs && cd certs
+openssl genrsa -out private.key 4096
+openssl req -new -key private.key -out certrequest.csr -sha512
+Zertifikat mit Hilfe des Requests certrequest.csr bei StartSSL erstellen
+Fertig signiertes Zertifikat speichern in einer neuen Datei mit dem Namen public.pem
+wget http://www.startssl.com/certs/sub.class1.server.ca.pem
+wget https://www.startssl.com/certs/ca.pem
+Backup der vorhandenen Zertifikate
+cp /etc/pve/pve-root-ca.pem /etc/pve/pve-root-ca.pem.orig
+cp /etc/pve/local/pve-ssl.key /etc/pve/local/pve-ssl.key.orig
+cp /etc/pve/local/pve-ssl.pem /etc/pve/local/pve-ssl.pem.orig
+Ersetzen der Zertifikate
+cp private.key /etc/pve/local/pve-ssl.key
+cp public.pem /etc/pve/local/pve-ssl.pem
+openssl rsa -in /etc/pve/local/pve-ssl.key >> /etc/pve/local/pve-ssl.pem
+cat sub.class1.server.ca.pem >> /etc/pve/local/pve-ssl.pem
+cat sub.class1.server.ca.pem ca.pem > /etc/pve/pve-root-ca.pem
+Dienste neu starten
+service pveproxy restart
+service pvedaemon restart
+Ab sofort müsste ein gültiges Zertifikat auf der Web-GUI angezeigt werden

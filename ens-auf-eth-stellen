@@ -1,0 +1,6 @@
+1. in der /etc/default/grub den Parameter GRUB_CMDLINE_LINUX um die Parameter net.ifnames=0 und biosdevname=0 erweitern.
+also solte dann die Zeile so aussehen: GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"
+2. grub-mkconfig -o /boot/grub/grub.cfg 
+ausführen
+3. /etc/network/interfaces editieren und alles was ens oder eno heißt in eth umbennen.
+4. reboot
