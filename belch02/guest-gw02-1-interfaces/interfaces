@@ -1,0 +1,23 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+	address 176.9.153.11
+	netmask 255.255.255.255
+	gateway 176.9.145.133
+	pointopoint 176.9.145.133
+	dns-nameservers 8.8.8.8
+	dns-search ffov.de
+
+iface eth0 inet6 static
+	address 2a01:4f8:160:238c:00ff:da:5:11/64
+	gateway 2a01:4f8:160:238c::2
+	pre-up ip -6 route add 2a01:4f8:160:238c::2 dev eth0
+

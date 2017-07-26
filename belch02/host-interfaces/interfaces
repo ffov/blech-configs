@@ -1,0 +1,31 @@
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+        address  176.9.145.133
+        netmask  255.255.255.224
+        gateway  176.9.145.129
+        pointopoint 176.9.145.129
+ 
+iface eth0 inet6 static
+        address  2a01:4f8:160:238c::2
+        netmask  128
+        gateway  fe80::1
+
+auto vmbr0
+iface vmbr0 inet static
+	address 176.9.145.133
+	netmask 255.255.255.224
+	bridge_ports none
+	bridge_stp off
+	bridge_fd 0
+
+        # Alle IPs aus dem bestellten /29er Netz
+        up ip route add 5.9.168.250/32 dev vmbr0
+        up ip route add 176.9.145.184/32 dev vmbr0
+        up ip route add 176.9.153.11/32 dev vmbr0
+ 
+iface vmbr0 inet6 static
+        address  2a01:4f8:160:238c::2
+        netmask  64

@@ -1,0 +1,24 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+iface eth0 inet static
+	address 148.251.239.153
+	netmask 255.255.255.255
+	gateway 144.76.156.176
+	pointopoint 144.76.156.176
+	# dns-* options are implemented by the resolvconf package, if installed
+	dns-nameservers 8.8.8.8
+	dns-search ffov.de
+
+iface eth0 inet6 static
+    address 2a01:4f8:200:24ab:ff:da:5:3
+    netmask 64
+    gateway 2a01:4f8:200:24ab::2
