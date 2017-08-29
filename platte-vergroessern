@@ -3,7 +3,7 @@ Also:
 2. Auf der vitr. Maschine  die Partition vergrößern ggf. bei extended Partition erst die Extended und dann die Logische
     (parted /dev/vda5 -> unit MB; print; resizepart [Nummer und Ende angeben, Ende wird bei Print als Größe angegeben]; quit)
 3. bei LVM mit pvresize /dev/vda5 das physikalische Volume vergrößern
-4. pvs zeit an wie viel jetzt frei ist
+4. pvs zeigt an wie viel jetzt frei ist
 5. mit lvextend --resizefs  -l +100%FREE /dev/gw02-1-vg/root jetzt das logische Volume vergrößern.
 
 Fertig.
