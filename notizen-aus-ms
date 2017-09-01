@@ -62,6 +62,9 @@ Firmware bauen:
 Tunneldigger auf gw stoppen:
 systemctl stop tunneldigger@*.service
 
+
+systemctl status kea-dhcp4.service
+
 Bird einschalten
 
 systemctl enable bird.service
