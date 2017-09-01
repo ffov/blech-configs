@@ -73,3 +73,6 @@ systemctl enable bird6.service
 
 jo das ist das baby von simon... dafür braucht ihr aber polygone von den orten...
 also sowas: https://github.com/FreiFunkMuenster/md-fw-dl/blob/master/shapes/domaene01.geojson
+
+ansible-playbook -i hosts gateways.yml --diff
+ansible-playbook -i hosts mapserver.yml --diff
