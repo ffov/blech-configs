@@ -1,0 +1,11 @@
+I know it is a littel pit late, but i do this easy way. For the first copy the partitiontable from another disk in the same pool. For example. SDB is the new disk:
+Code:
+sgdisk -R /dev/sdb /dev/sda
+So everything including grub is on the new disk.
+The UUID is copy with, so we must set a new one:
+Code:
+sgdisk -G /dev/sdb
+And finaly start the resliverprocess:
+Code:
+zpool replace -f rpool sdb2 sdb2
+Make sure to wait until resilver is done before rebooting. Diskbyid are also possible. (/dev/disk/by-id/)
