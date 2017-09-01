@@ -1,0 +1,72 @@
+FFOV ausrollen:
+        ansible-playbook -i inventories/ffov -u root site.yml
+
+Dry Run:
+        ansible-playbook -i inventories/ffov -u root site.yml --check
+	ansible-playbook -i inventories/ffov/hosts -u root site.yml --check
+	ansible-playbook -i hosts -u root gateways.yml --check
+
+Dry Run mit Difference & limitiert auf einen Host:
+        ansible-playbook -i inventories/ffov -u root site.yml --check --diff -l node01-1.ffov.de
+
+
+
+
+nur /gateways.yml nötig
+
+gw's in hosts definieren
+
+group_vars: gateways  -> ip's anpassen
+group_vars: all  -> anpassen
+
+backbone -> Müll
+
+Ansprechpartner Corny456
+
+
+Kein collectd ausrollen
+
+
+playbook -i hosts gateways.yml
+
+ggf ubuntu server statt debian 
+
+ansible mind. version 2.2 
+(Debian: apt-get -t jessie-backports install "ansible" )
+
+
+
+
+
+FFOV-L2TP:
+
+ansible-playbook -i hosts -u root gateways.yml --check
+
+
+
+GitHub Änderungen hochladen:
+git add -f * && git commit -m "Fremde Keys getauscht" && git push origin master
+
+GitHub Änderungen runterladen:
+git pull
+
+GitHub incl. links zu anderen Repos clonen:
+git clone --recurse-submodules -v https://github.com/ffov/ffov-ansible-l2tp.git
+
+ansible-playbook -i hosts -u root gateways.yml --check
+
+Firmware bauen:
+ ./build_all.sh -d Domäne-01 -d Domäne-02 -d Domäne-03 -d Domäne-04 -d Domäne-05 -d Domäne-06 -d Domäne-07 -d Domäne-08 v2016.2.6 0.0.1
+
+
+Tunneldigger auf gw stoppen:
+systemctl stop tunneldigger@*.service
+
+Bird einschalten
+
+systemctl enable bird.service
+systemctl enable bird6.service
+
+
+jo das ist das baby von simon... dafür braucht ihr aber polygone von den orten...
+also sowas: https://github.com/FreiFunkMuenster/md-fw-dl/blob/master/shapes/domaene01.geojson
