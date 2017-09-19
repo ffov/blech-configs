@@ -78,4 +78,4 @@ ansible-playbook -i hosts gateways.yml --diff
 ansible-playbook -i hosts mapserver.yml --diff
 
 systemctl start py-respondd
- ./NodeHierarchy.py -r https://karte.freifunk-ostvest.de/data/raw.json -s http://images.freifunk-ostvest.de/md-fw-dl/shapes/ -t domaene01 domaene02 domaene03 domaene04 -o results.txt
+./NodeHierarchy.py -r https://karte.freifunk-ostvest.de/data/raw.json -s http://images.freifunk-ostvest.de/md-fw-dl/shapes/ -t domaene01 domaene02 domaene03 domaene04 -o results.txt
