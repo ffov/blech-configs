@@ -56,7 +56,8 @@ git clone --recurse-submodules -v https://github.com/ffov/ffov-ansible-l2tp.git
 ansible-playbook -i hosts -u root gateways.yml --check
 
 Firmware bauen:
- ./build_all.sh -d Domäne-01 -d Domäne-02 -d Domäne-03 -d Domäne-04 -d Domäne-05 -d Domäne-06 -d Domäne-07 -d Domäne-08 v2016.2.6 0.0.1
+./build_all.sh -d Domäne-01 -d Domäne-02 -d Domäne-03 -d Domäne-04 -d Domäne-05 -d Domäne-06 -d Domäne-07 -d Domäne-08 v2016.2.6 0.0.1
+./build_all.sh -t ar71xx-generic -t ar71xx-nand -t mpc85xx-generic -t x86-generic -t x86-kvm_guest -t x86-64 -t x86-xen_domu -d Domäne-03 v2016.2.7 0.0.0
 
 
 Tunneldigger auf gw stoppen:
