@@ -1,0 +1,1 @@
+[contact-form to='info@freifunk-datteln.de'][contact-field label='Name' type='name' required='1'/][contact-field label='E-Mail' type='email' required='1'/][contact-field label='Webseite' type='url'/][contact-field label='Betreff' type='text' required='1'/][contact-field label='Kommentar' type='textarea' required='1'/][/contact-form]
